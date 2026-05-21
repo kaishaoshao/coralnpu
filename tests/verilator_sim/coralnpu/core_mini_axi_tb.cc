@@ -440,6 +440,10 @@ absl::Status CoreMiniAxi_tb::CheckStatusAsync() {
   return absl::OkStatus();
 }
 
+uint32_t CoreMiniAxi_tb::GetCycleCount() const {
+  return debug_io_.cycles.read().get_word(0);
+}
+
 void CoreMiniAxi_tb::TraceInstructions() {
 #define TRACE_INSTRUCTION(x) do { \
   uint32_t pc, inst, idx; \

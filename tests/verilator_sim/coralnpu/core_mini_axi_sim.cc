@@ -16,6 +16,7 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 
+#include <iostream>
 #include <optional>
 #include <string>
 #include <thread>
@@ -76,6 +77,7 @@ static bool run(const char* name, const std::string binary, const int cycles,
     CHECK_OK(tb.CheckStatusSync());
   }
 
+  std::cout << "Simulation cycles: " << tb.GetCycleCount() << std::endl;
   sc_stop();
   sc_main_thread.join();
   return (!tb.io_fault && !(tb.tohost_halt && tb.tohost_val != 1));

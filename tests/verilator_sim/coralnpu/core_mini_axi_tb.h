@@ -210,6 +210,7 @@ struct CoreMiniAxi_tb : Sysc_tb {
   absl::Status ResetAsync(bool enable);
   absl::Status CheckStatusSync();
   absl::Status CheckStatusAsync();
+  uint32_t GetCycleCount() const;
 
   VERILATOR_MODEL* core() { return core_.get(); }
 
